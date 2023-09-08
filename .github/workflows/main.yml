@@ -57,7 +57,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          haxelib --quiet install hxcpp
+          haxelib --quiet install hxcpp 4.3.2
           haxelib install hscript
           haxelib --quiet install format
           haxelib --quiet install hxp
