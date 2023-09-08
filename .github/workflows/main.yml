@@ -57,27 +57,20 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null
-          haxelib run lime setup flixel
-          haxelib install flixel-tools
-          haxelib install lime 7.9.0
-          haxelib install openfl 9.1.0
-          haxelib install flixel 4.11.0
-          haxelib install flixel-addons 2.11.0
-          haxelib install flixel-ui 2.4.0
-          haxelib install tjson
-          haxelib install hxjsonast
-          haxelib install hscript
+          haxelib --quiet install hxcpp
+          haxelib --quiet install format
+          haxelib --quiet install hxp
+          haxelib --quiet install lime 7.9.0
+          haxelib --quiet install openfl 9.1.0
+          haxelib --quiet install flixel 4.11.0
+          haxelib --quiet install flixel-addons 2.11.0
+          haxelib --quiet install flixel-ui 2.4.0
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit.git
           haxelib git hxCodec https://github.com/JonnycatMeow/hxCodec-2.5.1.git
           haxelib git extension-androidtools https://github.com/MaysLastPlay77/extension-androidtools
-          haxelib install hxcpp-debug-server
           haxelib list
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
 
-      - name: Setup Lime
+      - name: Configure Android
         run: |
           haxelib run lime setup -alias -y
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
@@ -86,7 +79,7 @@ jobs:
           haxelib run lime config ANDROID_SETUP true
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-
+        
       - name: Compile
         run: haxelib run lime build android -D officialBuild -D NO_PRECOMPILED_HEADERS -D mobileC -release
         env:
