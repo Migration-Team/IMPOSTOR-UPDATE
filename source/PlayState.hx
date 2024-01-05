@@ -3580,8 +3580,6 @@ class PlayState extends MusicBeatState
 				add(emergency);
 				add(whoAngered);
 
-			case 'polus3':
-				//thing
 			case 'spooky':
 				add(halloweenWhite);
 			case 'airship':
@@ -4343,9 +4341,6 @@ class PlayState extends MusicBeatState
 
 				case 'sussus-toogus':
 					startVideo('toogus');
-					piss = false;
-				case 'mando':
-					startVideo('mando');
 					piss = false;
 				case 'lights-down'| 'dlow' | 'ashes' | 'magmatic'| 'heartbeat'| 'pinkwave'| 'delusion':
 					schoolIntro(doof);
